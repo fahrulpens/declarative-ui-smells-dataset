@@ -125,12 +125,6 @@ The selected-project summary is intended to be documented in:
 metadata/selected_projects.csv
 ```
 
-The percentile-based selection process is intended to be summarized in:
-
-```text
-metadata/stratified_sampling_summary.csv
-```
-
 ---
 
 ## 5. Code Snippet Extraction
