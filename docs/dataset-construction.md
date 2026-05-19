@@ -314,9 +314,9 @@ The three smell-specific label distributions range from relatively balanced to m
 During dataset preparation, smell-specific consensus-labeled files were maintained separately:
 
 ```text
-rawdata_nv.xlsx
-rawdata_mv.xlsx
-rawdata_bv.xlsx
+rawdata_nv.csv
+rawdata_mv.csv
+rawdata_bv.csv
 ```
 
 Each file contains:
@@ -332,9 +332,9 @@ For the repository release, the smell-specific consensus files are merged into o
 
 | Source Working File | Original Label Meaning | Released Field  |
 | ------------------- | ---------------------- | --------------- |
-| `rawdata_nv.xlsx`   | Nested View label      | `nested_view`   |
-| `rawdata_mv.xlsx`   | Mutable View label     | `mutable_view`  |
-| `rawdata_bv.xlsx`   | Blocking View label    | `blocking_view` |
+| `rawdata_nv.csv`   | Nested View label      | `nested_view`   |
+| `rawdata_mv.csv`   | Mutable View label     | `mutable_view`  |
+| `rawdata_bv.csv`   | Blocking View label    | `blocking_view` |
 
 The public dataset is planned to be distributed as:
 
