@@ -8,17 +8,17 @@ The **DUIS Dataset** (**Declarative UI Smell Dataset**) is a labeled dataset of 
 * **Mutable View (MV)**
 * **Blocking View (BV)**
 
-The dataset was introduced in the paper:
+The dataset was introduced in the following conference paper:
 
-> [1] F. F. Hardiansyah, D. Siahaan, and M. Aritsugi, “Evaluating Deep Learning Models for Declarative UI Code Smell Detection,” in 2026 International Conference on Smart Computing, IoT, and Machine Learning (SIML), 2026.
+> [1] F. F. Hardiansyah, D. Siahaan, and M. Aritsugi, “Evaluating Deep Learning Models for Declarative UI Code Smell Detection,” in *2026 International Conference on Smart Computing, IoT, and Machine Learning (SIML)*, 2026.
 
 ---
 
 ## 1. Overview
 
-Declarative UI frameworks, such as Flutter, structure user interfaces as a function of application state. While this paradigm improves composability and productivity, it can also introduce specific quality issues related to widget hierarchy complexity, state mutation during rendering, and expensive operations embedded in UI declarations.
+Declarative UI frameworks, such as Flutter, structure user interfaces as a function of application state. While this paradigm improves composability and productivity, it can also introduce specific quality issues related to widget hierarchy complexity, state mutation during rendering, and blocking or expensive operations embedded in UI declarations.
 
-The DUIS Dataset was constructed to provide a publicly reusable benchmark for studying these issues in Flutter code. It is intended for tasks such as:
+The DUIS Dataset was constructed to provide a publicly reusable dataset for studying these issues in Flutter code. It is intended to support tasks such as:
 
 * Declarative UI code smell detection
 * Binary or multi-label classification
@@ -30,19 +30,22 @@ The DUIS Dataset was constructed to provide a publicly reusable benchmark for st
 
 ## 2. Dataset at a Glance
 
-| Item                 | Description                                                                                      |
-| -------------------- | ------------------------------------------------------------------------------------------------ |
-| Dataset name         | DUIS Dataset                                                                                     |
-| Full name            | Declarative UI Smell Dataset                                                                     |
-| Programming language | Dart                                                                                             |
-| Framework            | Flutter                                                                                          |
-| Number of samples    | 1,896 code snippets                                                                              |
-| Labeling type        | Binary label per smell (`0` = absent, `1` = present)                                             |
-| Annotation setting   | Five professional mobile developers                                                              |
-| Smell types          | Nested View, Mutable View, Blocking View                                                         |
-| Code units           | Flutter source-code snippets extracted from classes, methods, widgets, and related UI components |
-| Data source          | Open-source Flutter projects from GitHub                                                         |
-| Main release formats | CSV and JSONL                                                                                    |
+| Item                   | Description                                                                                      |
+| ---------------------- | ------------------------------------------------------------------------------------------------ |
+| Dataset name           | DUIS Dataset                                                                                     |
+| Full name              | Declarative UI Smell Dataset                                                                     |
+| Programming language   | Dart                                                                                             |
+| Framework              | Flutter                                                                                          |
+| Number of samples      | 1,896 code snippets                                                                              |
+| Number of smell types  | 3                                                                                                |
+| Smell types            | Nested View, Mutable View, Blocking View                                                         |
+| Labeling type          | Binary label per smell (`0` = absent, `1` = present)                                             |
+| Dataset representation | Multi-label dataset; one snippet may contain none, one, or multiple smells                       |
+| Annotation setting     | Five professional mobile developers                                                              |
+| Final-label strategy   | Majority voting over five independent annotations                                                |
+| Code units             | Flutter source-code snippets extracted from classes, methods, widgets, and related UI components |
+| Data source            | Open-source Flutter projects from GitHub                                                         |
+| Main release formats   | CSV and JSONL                                                                                    |
 
 ---
 
@@ -113,10 +116,10 @@ A line-delimited JSON version of the dataset intended for code-oriented and prog
 
 Each sample contains:
 
-1. A unique identifier
+1. A unique sample identifier
 2. A Flutter source-code snippet
 3. Three binary smell labels
-4. A set of structural and behavior-related metrics extracted from the snippet
+4. Twenty extracted metric values associated with structural and behavior-related characteristics of the code snippet
 
 ### 5.1 Core Fields
 
@@ -130,40 +133,36 @@ Each sample contains:
 
 ### 5.2 Metric Fields
 
-The released dataset also contains metric columns associated with the original annotation and analysis process. These metrics include general source-code measures and smell-relevant indicators.
+The released dataset includes the following metric columns:
 
-| Field     | Description                                                                            |
-| --------- | -------------------------------------------------------------------------------------- |
-| `LoC`     | Lines of Code                                                                          |
-| `NoM`     | Number of Methods                                                                      |
-| `NoP`     | Number of Parameters                                                                   |
-| `CC`      | Cyclomatic Complexity                                                                  |
-| `MND`     | Maximum Nesting Depth                                                                  |
-| `NoF`     | Number of Fields                                                                       |
-| `CR`      | Code-related structural measure retained from the dataset construction process         |
-| `NoW`     | Number of Widgets                                                                      |
-| `MNW`     | Maximum Nested Widgets                                                                 |
-| `SCCL`    | Smell-related code complexity indicator retained from the dataset construction process |
-| `sStC`    | State-related structural code measure retained from the dataset construction process   |
-| `PBM`     | Pattern/behavior measure retained from the dataset construction process                |
-| `FAC`     | Function/API-related count retained from the dataset construction process              |
-| `MC`      | Mutation-related count retained from the dataset construction process                  |
-| `API`     | API-call-related indicator                                                             |
-| `DbC`     | Database-call-related indicator                                                        |
-| `SyncIO`  | Synchronous I/O-related indicator                                                      |
-| `ImgC`    | Image/codec-related indicator                                                          |
-| `AsyncUI` | Asynchronous UI-related indicator                                                      |
-| `TmrStr`  | Timer/stream-related indicator                                                         |
+```text
+LoC, NoM, NoP, CC, MND, NoF, CR, NoW, MNW, SCCL,
+sStC, PBM, FAC, MC, API, DbC, SyncIO, ImgC, AsyncUI, TmrStr
+```
 
-> A more detailed description of each metric will be provided in `docs/data_schema.md`.
+These metrics were retained from the dataset construction process and are included to support further analysis of structural and behavior-related characteristics associated with declarative UI code smells.
+
+> Detailed definitions of each metric will be provided in `docs/data_schema.md`.
 
 ---
 
-## 6. Dataset Construction Summary
+## 6. Label Distribution
 
-The DUIS Dataset was developed through a multi-stage construction process:
+The DUIS Dataset contains binary labels for each of the three declarative UI code smells. The label distribution reported in the associated study is summarized below.
 
-### 6.1 Target Smell Definition
+| Smell Type         | Smelly Samples | Clean Samples | Smelly (%) | Clean (%) | Imbalance Ratio |
+| ------------------ | -------------: | ------------: | ---------: | --------: | --------------: |
+| Nested View (NV)   |          1,048 |           848 |       55.3 |      44.7 |        1.24 : 1 |
+| Mutable View (MV)  |          1,179 |           717 |       62.2 |      37.8 |        1.61 : 1 |
+| Blocking View (BV) |            391 |         1,505 |       20.6 |      79.4 |        3.85 : 1 |
+
+---
+
+## 7. Dataset Construction Summary
+
+The DUIS Dataset was developed through a multi-stage construction process designed to support data quality, annotation consistency, and reuse by future studies.
+
+### 7.1 Target Smell Definition
 
 Three declarative UI code smells were selected and operationalized:
 
@@ -173,25 +172,27 @@ Three declarative UI code smells were selected and operationalized:
 
 The smell definitions, typical symptoms, impacted quality aspects, and annotation considerations are documented in the annotation guideline.
 
-### 6.2 Project Collection and Sampling
+### 7.2 Project Collection and Sampling
 
 A set of **57 candidate open-source Flutter projects** was initially collected from GitHub. From these candidates, **five projects** were selected using **stratified random sampling based on Lines of Code (LoC)** to represent different project-size strata.
 
-The selected projects were chosen at the following percentile positions:
+The selected projects were chosen at the 10th, 30th, 50th, 70th, and 90th percentiles.
 
-* 10th percentile
-* 30th percentile
-* 50th percentile
-* 70th percentile
-* 90th percentile
+| Project                   | Lines of Code (LoC) | Number of Samples | Percentile |
+| ------------------------- | ------------------: | ----------------: | ---------: |
+| `flutter-task-manager`    |               1,132 |                43 |         10 |
+| `instagram-flutter-clone` |               2,444 |                95 |         30 |
+| `mobile-iot-device`       |               5,240 |               275 |         50 |
+| `Timecop`                 |              10,120 |               264 |         70 |
+| `air-controller-desktop`  |              31,268 |             1,220 |         90 |
 
-### 6.3 Snippet Extraction
+### 7.3 Snippet Extraction
 
 Code samples were extracted from Flutter source code as snippet-level units. These snippets represent classes, methods, widgets, or other UI-related components relevant to declarative UI code smell analysis.
 
 The final dataset contains **1,896 code snippets**.
 
-### 6.4 Annotation Process
+### 7.4 Annotation Process
 
 All code snippets were independently annotated by **five professional mobile developers**. Each annotator labeled the presence or absence of each target smell using binary values.
 
@@ -202,17 +203,27 @@ For each sample and each smell:
 
 The dataset supports multi-label representation, meaning that a single snippet may exhibit none, one, or multiple smell types.
 
-### 6.5 Annotation Quality Assessment
+Final labels in the released DUIS Dataset were determined using **majority voting** over the five independent annotations.
+
+### 7.5 Annotation Quality Assessment
 
 Annotation reliability was evaluated through inter-rater agreement analysis. Pairwise agreement was assessed using **Cohen’s Kappa**, and overall agreement across annotators was assessed using **Fleiss’s Kappa**.
 
-Detailed agreement statistics will be documented separately in the dataset documentation.
+The overall agreement results are summarized below.
+
+| Smell Type         | Fleiss’s Kappa | 95% Confidence Interval | Interpretation      |
+| ------------------ | -------------: | ----------------------- | ------------------- |
+| Nested View (NV)   |           0.85 | 0.84–0.87               | Excellent agreement |
+| Mutable View (MV)  |           0.63 | 0.61–0.65               | Good agreement      |
+| Blocking View (BV) |           0.50 | 0.47–0.53               | Good agreement      |
+
+More detailed annotation materials and agreement summaries are planned to be documented in the repository documentation.
 
 ---
 
-## 7. Repository Structure
+## 8. Repository Structure
 
-The repository is planned as follows:
+The repository is organized as follows:
 
 ```text
 .
@@ -237,7 +248,36 @@ The repository is planned as follows:
 
 ---
 
-## 8. Intended Use
+## 9. Quick Start
+
+### 9.1 Loading the CSV Version with Python
+
+```python
+import pandas as pd
+
+dataset = pd.read_csv("data/duis_dataset.csv")
+print(dataset.head())
+```
+
+### 9.2 Loading the JSONL Version with Python
+
+```python
+import pandas as pd
+
+dataset = pd.read_json("data/duis_dataset.jsonl", lines=True)
+print(dataset.head())
+```
+
+### 9.3 Example Label Selection
+
+```python
+labels = dataset[["nested_view", "mutable_view", "blocking_view"]]
+print(labels.head())
+```
+
+---
+
+## 10. Intended Use
 
 The DUIS Dataset is intended to support academic and empirical research on declarative UI software quality, particularly in the context of Flutter applications.
 
@@ -251,30 +291,23 @@ Potential use cases include:
 
 ---
 
-## 9. Citation
+## 11. Citation
 
-If you use the DUIS Dataset in your research, please cite the associated paper:
+If you use the DUIS Dataset in your research, please cite the associated paper using the following IEEE-style reference:
 
-```bibtex
-@inproceedings{hardiansyah2026duis,
-  title={Evaluating Deep Learning Models for Declarative UI Code Smell Detection},
-  author={Hardiansyah, Fadilah Fahrul and Siahaan, Daniel and Aritsugi, Masayoshi},
-  booktitle={Proceedings of SIML 2026},
-  year={2026}
-}
-```
+> [1] F. F. Hardiansyah, D. Siahaan, and M. Aritsugi, “Evaluating Deep Learning Models for Declarative UI Code Smell Detection,” in *2026 International Conference on Smart Computing, IoT, and Machine Learning (SIML)*, 2026.
 
 A machine-readable citation file will be provided in `CITATION.cff`.
 
 ---
 
-## 10. License
+## 12. License
 
 This repository is released under the **MIT License**, unless otherwise stated in specific files.
 
 ---
 
-## 11. Contact
+## 13. Contact
 
 For questions, corrections, or collaboration related to the DUIS Dataset, please contact:
 
