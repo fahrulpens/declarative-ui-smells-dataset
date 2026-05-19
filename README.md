@@ -232,6 +232,12 @@ The repository is organized as follows:
 ├── CITATION.cff
 │
 ├── data/
+│   ├── per_smell/
+│       ├── rawdata_nv.csv
+│       ├── rawdata_mv.csv
+│       ├── rawdata_bv.csv
+│   ├── raw_annotations/
+│       ├── raw_annotations.csv
 │   ├── duis_dataset.csv
 │   └── duis_dataset.jsonl
 │
@@ -242,8 +248,7 @@ The repository is organized as follows:
 │
 └── metadata/
     ├── selected_projects.csv
-    ├── candidate_projects.csv
-    └── stratified_sampling_summary.csv
+    └── candidate_projects.csv
 ```
 
 ---
