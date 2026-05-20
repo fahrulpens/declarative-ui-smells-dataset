@@ -302,7 +302,7 @@ If you use the DUIS Dataset in your research, please cite the associated paper u
 
 > [1] F. F. Hardiansyah, D. Siahaan, and M. Aritsugi, “Evaluating Deep Learning Models for Declarative UI Code Smell Detection,” in *2026 International Conference on Smart Computing, IoT, and Machine Learning (SIML)*, 2026.
 
-A machine-readable citation file will be provided in `CITATION.cff`.
+A machine-readable citation file is provided in `CITATION.cff`.
 
 ---
 
