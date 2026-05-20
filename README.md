@@ -142,7 +142,7 @@ sStC, PBM, FAC, MC, API, DbC, SyncIO, ImgC, AsyncUI, TmrStr
 
 These metrics were retained from the dataset construction process and are included to support further analysis of structural and behavior-related characteristics associated with declarative UI code smells.
 
-> Detailed definitions of each metric will be provided in `docs/data_schema.md`.
+> Detailed definitions of each metric are provided in `docs/data_schema.md`.
 
 ---
 
