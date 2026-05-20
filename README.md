@@ -110,6 +110,12 @@ A tabular version of the dataset intended for quick inspection and conventional 
 
 A line-delimited JSON version of the dataset intended for code-oriented and programmatic processing. Each line represents one dataset sample.
 
+### 4.3 Supporting Data Files
+
+In addition to the merged DUIS Dataset, the repository also provides:
+- smell-specific consensus files in `data/per_smell/`
+- pre-consensus annotator-level labels in `data/raw_annotations/raw_annotations.csv`
+
 ---
 
 ## 5. Dataset Schema
