@@ -1,7 +1,7 @@
 candidate_project_id,project_name,repository_url,lines_of_code,percentile_rank
 1,e-quran app,https://github.com/ya27hw/equran_app,34530,91.1
 2,Movies App,https://github.com/vellt/Movies-App-Flutter.git,1835,26.8
-3,MMAS: Money Tracker,https://github.com/floranguyen0/mmas-money-tr                                                                                                                                       acker,9760,66.1
+3,MMAS: Money Tracker,https://github.com/floranguyen0/mmas-money-tracker,9760,66.1
 4,EasyWeather,https://github.com/tejasbadone/easyweather,1301,14.3
 5,FlutterNewsApp,https://github.com/theindianappguy/FlutterNewsApp,547,1.8
 6,Ez-Ticket,https://github.com/arafaysaleem/ez_tickets_app,12871,80.4
