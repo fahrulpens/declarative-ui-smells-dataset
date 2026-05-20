@@ -1,1 +1,36 @@
+cff-version: 1.2.0
 
+message: |
+  If you use the DUIS Dataset, please cite the associated paper:
+
+  F. F. Hardiansyah, D. O. Siahaan, and M. Aritsugi,
+  “Evaluating Deep Learning Models for Declarative UI Code Smell Detection,”
+  in 2026 International Conference on Smart Computing, IoT, and Machine Learning (SIML), 2026.
+
+title: "DUIS Dataset"
+type: dataset
+license: MIT
+repository-code: "https://github.com/fahrulpens/declarative-ui-smells-dataset"
+
+authors:
+  - name: "Fadilah Fahrul Hardiansyah"
+  - name: "Daniel Oranova Siahaan"
+  - name: "Masayoshi Aritsugi"
+
+keywords:
+  - "declarative UI"
+  - Flutter
+  - "code smell"
+  - "software quality"
+  - dataset
+
+preferred-citation:
+  type: conference-paper
+  authors:
+    - name: "Fadilah Fahrul Hardiansyah"
+    - name: "Daniel Oranova Siahaan"
+    - name: "Masayoshi Aritsugi"
+  title: "Evaluating Deep Learning Models for Declarative UI Code Smell Detection"
+  conference:
+    name: "2026 International Conference on Smart Computing, IoT, and Machine Learning (SIML)"
+  year: 2026
