@@ -1,15 +1,18 @@
 cff-version: 1.2.0
 
 message: |
-  If you use the DUIS Dataset, please cite the associated paper:
+  If you use the DUIS Dataset, please cite the associated paper as the primary reference:
 
   F. F. Hardiansyah, D. O. Siahaan, and M. Aritsugi,
   “Evaluating Deep Learning Models for Declarative UI Code Smell Detection,”
   in 2026 International Conference on Smart Computing, IoT, and Machine Learning (SIML), 2026.
+  DOI: PAPER_DOI_HERE
 
 title: "DUIS Dataset"
+version: "1.0.0"
+date-released: "YYYY-MM-DD"
 type: dataset
-license: MIT
+license: "MIT"
 repository-code: "https://github.com/fahrulpens/declarative-ui-smells-dataset"
 
 authors:
@@ -17,12 +20,19 @@ authors:
   - name: "Daniel Oranova Siahaan"
   - name: "Masayoshi Aritsugi"
 
+contact:
+  - name: "Fadilah Fahrul Hardiansyah"
+    email: fahrul@pens.ac.id
+    orcid: "https://orcid.org/0000-0003-3310-6103"
+
 keywords:
-  - "declarative UI"
+  - "Declarative UI"
   - Flutter
-  - "code smell"
-  - "software quality"
-  - dataset
+  - Dart
+  - "Code Smell"
+  - "Software Quality"
+  - "Dataset"
+  - "Multi-label Classification"
 
 preferred-citation:
   type: conference-paper
@@ -34,3 +44,4 @@ preferred-citation:
   conference:
     name: "2026 International Conference on Smart Computing, IoT, and Machine Learning (SIML)"
   year: 2026
+  doi: "PAPER_DOI_HERE"
