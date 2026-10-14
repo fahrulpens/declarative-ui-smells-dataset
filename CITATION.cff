@@ -6,7 +6,7 @@ message: |
   F. F. Hardiansyah, D. O. Siahaan, and M. Aritsugi,
   “Evaluating Deep Learning Models for Declarative UI Code Smell Detection,”
   in 2026 International Conference on Smart Computing, IoT, and Machine Learning (SIML), 2026.
-  DOI: PAPER_DOI_HERE
+  DOI: 10.1109/SIML69834.2026.11621778
 
 title: "DUIS Dataset"
 version: "1.0.0"
@@ -44,4 +44,4 @@ preferred-citation:
   conference:
     name: "2026 International Conference on Smart Computing, IoT, and Machine Learning (SIML)"
   year: 2026
-  doi: "PAPER_DOI_HERE"
+  doi: "10.1109/SIML69834.2026.11621778"
